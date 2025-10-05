@@ -50,9 +50,12 @@ flwr run .
 
 
 ## 相关参考
-flower官网
+flower联邦学习框架
 
 
-tenseal官网
+tenseal加密库
+
+
+数据集 BreakHis乳腺癌二分类
 
 
