@@ -25,6 +25,30 @@ flwr run .
 直接运行fl1下的run即可，会上传根目录下的test图片
 
 
+## 项目目录
+未在目录中出现的文件暂时标记为次要文件
+```
+│  .gitignore
+│  final_model.pt    //1阶段训练结果
+│  pyproject.toml    //一些flower参数配置
+│  test.jpg          //2阶段测试图片
+│          
+├─fl0                //1. 差分隐私训练
+│  │  client_app.py  //医院客户端
+│  │  net.py         //神经网络
+│  │  server_app.py  //服务器
+│  │  task.py        //客户端和服务器端所需要的类
+│  └─
+│            
+│          
+└─fl1                 //2. 同态加密预测
+    │  client.py      //医院客户端
+    │  run.py         //运行
+    │  server.py      //服务器
+    └─
+```
+
+
 ## 相关参考
 flower官网
 
