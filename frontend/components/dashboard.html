@@ -1,0 +1,39 @@
+<!-- dashboard.html -->
+<div class="card-ghost card p-3 mb-3">
+  <div class="d-flex justify-content-between align-items-start">
+    <div>
+      <div class="small-muted">最近一次预测</div>
+      <div v-if="lastPrediction" class="mt-2">
+        <div :class="['big-badge', lastPrediction.diagnosis==='阳性' ? 'bg-danger text-white' : 'bg-success text-white']">{{ lastPrediction.diagnosis }}</div>
+        <div class="mt-2 small-muted">概率: {{ probText(lastPrediction) }}</div>
+      </div>
+      <div v-else class="text-muted">尚无预测记录</div>
+    </div>
+    <div v-if="lastPrediction">
+      <img :src="lastPrediction.preview_url" alt="preview" style="width:140px; height:auto; border-radius:.6rem; border:1px solid #e6eef8;">
+    </div>
+  </div>
+</div>
+
+<div class="row g-3">
+  <div class="col-lg-8">
+    <div class="card-ghost card p-3 chart-card">
+      <div class="d-flex justify-content-between mb-2">
+        <div><strong>训练曲线（损失 & 准确率）</strong></div>
+        <div><button class="btn btn-sm btn-outline-primary" @click="refreshMetrics">刷新</button></div>
+      </div>
+      <div id="chart-metrics" style="height:300px;"></div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card-ghost card p-3 chart-card">
+      <div><strong>类别分布</strong></div>
+      <div id="chart-pie" style="height:300px;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="card-ghost card p-3 mt-3">
+  <div><strong>混淆矩阵</strong></div>
+  <div id="chart-confusion" style="height:260px;margin-top:10px;"></div>
+</div>

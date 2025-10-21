@@ -1,0 +1,264 @@
+{
+  "predictions": [
+    {
+      "username": "hu",
+      "timestamp": "2025-10-09T06:47:45.896563",
+      "probabilities": [
+        1.0,
+        0.0
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1759992464134.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-09T12:50:55.233239",
+      "probabilities": [
+        1.0,
+        0.0
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/test.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-09T12:50:59.920099",
+      "probabilities": [
+        1.0,
+        0.0
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1760014258657.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-10T04:20:56.869213",
+      "probabilities": [
+        1.0,
+        0.0
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1760070054599.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-10T08:15:48.067502",
+      "probabilities": [
+        0.9907649755477905,
+        0.006411128211766481
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1760084146425.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-10T08:19:08.712061",
+      "probabilities": [
+        0.9907649755477905,
+        0.006411134265363216
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1760084347198.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-10T08:55:52.811889",
+      "probabilities": [
+        0.9631105065345764,
+        0.028561504557728767
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1760086550894.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-10T12:54:16.770924",
+      "probabilities": [
+        0.9664888381958008,
+        0.05346802622079849
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1760100855121.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-10T13:17:17.270025",
+      "probabilities": [
+        0.9698323011398315,
+        0.08962015807628632
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1760102235331.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-11T02:15:14.885146",
+      "probabilities": [
+        0.9698323011398315,
+        0.08962029218673706
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/test.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-11T02:15:31.996708",
+      "probabilities": [
+        0.9698324203491211,
+        0.08962023258209229
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1760148930449.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-11T02:34:01.373288",
+      "probabilities": [
+        0.969832181930542,
+        0.08962056040763855
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1760150039880.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-11T13:10:39.531406",
+      "probabilities": [
+        0.9733127951622009,
+        0.0037855906412005424
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1760188237382.jpg"
+    },
+    {
+      "username": "mimaxue",
+      "timestamp": "2025-10-15T01:49:01.902922",
+      "probabilities": [
+        0.9856292605400085,
+        0.005546878091990948
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1760492940259.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-20T06:47:18.952132",
+      "probabilities": [
+        0.9637952446937561,
+        0.03455406054854393
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1760942836271.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-20T07:04:09.405978",
+      "probabilities": [
+        0.9637951850891113,
+        0.03455410897731781
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1760943847989.jpg"
+    },
+    {
+      "username": "lee",
+      "timestamp": "2025-10-20T10:40:24.445596",
+      "probabilities": [
+        0.9637952446937561,
+        0.034554027020931244
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/test.jpg"
+    },
+    {
+      "username": "lee",
+      "timestamp": "2025-10-20T10:40:28.440988",
+      "probabilities": [
+        0.9637952446937561,
+        0.034553997218608856
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1760956826954.jpg"
+    },
+    {
+      "username": "li",
+      "timestamp": "2025-10-20T10:58:08.406546",
+      "probabilities": [
+        0.9637952446937561,
+        0.03455410152673721
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1760957886852.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-20T11:45:24.553598",
+      "probabilities": [
+        0.9943439960479736,
+        0.015304838307201862
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1760960722685.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-20T12:19:50.088402",
+      "probabilities": [
+        0.9943441152572632,
+        0.015304853208363056
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1760962788387.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-20T12:29:43.359265",
+      "probabilities": [
+        0.9943441152572632,
+        0.015304810367524624
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1760963379185.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-20T13:52:00.356683",
+      "probabilities": [
+        0.8641844391822815,
+        0.09546228498220444
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1760968318686.jpg"
+    },
+    {
+      "username": "lee",
+      "timestamp": "2025-10-20T13:54:53.170586",
+      "probabilities": [
+        0.8641848564147949,
+        0.09546168893575668
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1760968491957.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-21T05:42:42.546407",
+      "probabilities": [
+        0.937626838684082,
+        0.050007931888103485
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1761025347714.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-21T05:47:58.633488",
+      "probabilities": [
+        0.9376271367073059,
+        0.05000773444771767
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1761025675025.jpg"
+    }
+  ]
+}

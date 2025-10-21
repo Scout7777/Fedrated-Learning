@@ -1,0 +1,20 @@
+<!-- history.html -->
+<div class="card-ghost card p-3 mb-3">
+  <div><strong>预测历史</strong><div class="small-muted">仅显示当前登录用户的历史</div></div>
+  <div class="mt-3">
+    <table class="table table-hover">
+      <thead>
+        <tr><th>时间</th><th>预览</th><th>诊断</th><th>概率</th></tr>
+      </thead>
+      <tbody>
+        <tr v-for="p in history" :key="p.timestamp">
+          <td>{{ new Date(p.timestamp).toLocaleString() }}</td>
+          <td><img :src="p.preview_url" style="width:80px; border-radius:.4rem;" /></td>
+          <td><span :class="['badge', p.diagnosis==='阳性' ? 'bg-danger' : 'bg-success']">{{ p.diagnosis }}</span></td>
+          <td>{{ p.probabilities.join(' , ') }}</td>
+        </tr>
+        <tr v-if="history.length===0"><td colspan="4" class="text-muted">暂无历史记录</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>

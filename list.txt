@@ -1,0 +1,46 @@
+卷 Windows 的文件夹 PATH 列表
+卷序列号为 9A46-A9E8
+C:.
+│  .gitignore
+│  final_model.pt
+│  list.txt
+│  pyproject.toml
+│  README.md
+│  test.jpg
+│  test.py
+│  test_datasets.py
+│  
+├─.idea
+│  │  .gitignore
+│  │  fl0.iml
+│  │  misc.xml
+│  │  modules.xml
+│  │  vcs.xml
+│  │  workspace.xml
+│  │  
+│  └─inspectionProfiles
+│          profiles_settings.xml
+│          
+├─fl0
+│  │  client_app.py
+│  │  net.py
+│  │  server_app.py
+│  │  task.py
+│  │  __init__.py
+│  │  
+│  └─__pycache__
+│          client_app.cpython-310.pyc
+│          net.cpython-310.pyc
+│          server_app.cpython-310.pyc
+│          task.cpython-310.pyc
+│          __init__.cpython-310.pyc
+│          
+└─fl1
+    │  client.py
+    │  run.py
+    │  server.py
+    │  
+    └─__pycache__
+            client.cpython-310.pyc
+            server.cpython-310.pyc
+            

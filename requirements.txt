@@ -1,0 +1,12 @@
+flask
+flask-cors
+# 下面两个依赖按需安装，如果你的 fl1.client 依赖其它库（torch、numpy 等）请自行在 env 中安装
+torch
+numpy
+pyjwt
+werkzeug
+# 人脸识别相关依赖
+opencv-python
+face-recognition
+Pillow
+tenseal

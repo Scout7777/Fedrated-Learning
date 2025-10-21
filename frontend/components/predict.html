@@ -1,0 +1,132 @@
+<!-- predict.html -->
+<div class="card-ghost card p-3 mb-3">
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <div><strong>影像预测</strong><div class="small-muted">上传图像后进行推理（需要登录）</div></div>
+    <div>
+      <button class="btn btn-outline-secondary btn-sm me-2" @click="useDemoImage">使用 repo 中的 test.jpg</button>
+      <input type="file" ref="uploadInput" style="display:none" @change="onFileChange" accept="image/*" />
+      <button class="btn btn-primary btn-sm" @click="$refs.uploadInput.click()">上传图像并预测</button>
+    </div>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-md-5">
+      <div v-if="preview" class="text-center p-2 border rounded">
+        <img :src="preview" style="max-width:100%; border-radius:.5rem;" />
+      </div>
+      <div v-else class="text-muted">尚未选择图像或使用示例图像</div>
+    </div>
+
+    <div class="col-md-7">
+      <div v-if="predictLoading" class="d-flex align-items-center gap-3">
+        <div class="spinner-border" role="status"></div> 正在推理...
+      </div>
+
+      <div v-else-if="predictResult">
+        <div class="mb-2">
+          <div :class="['big-badge', predictResult.diagnosis==='阳性' ? 'bg-danger text-white' : 'bg-success text-white']">{{ predictResult.diagnosis }}</div>
+        </div>
+
+        <div class="mb-3">
+          <div class="small-muted">概率分布</div>
+          <div class="mt-2">
+            <div class="mb-2">类别 0
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" :style="{width: pct(predictResult,0) +'%'}">{{ pct(predictResult,0) }}%</div>
+              </div>
+            </div>
+            <div class="mb-2">类别 1
+              <div class="progress">
+                <div class="progress-bar bg-secondary" role="progressbar" :style="{width: pct(predictResult,1) +'%'}">{{ pct(predictResult,1) }}%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="small-muted">原始输出</div>
+          <div class="tensor-box mt-2">{{ predictResult.raw }}</div>
+        </div>
+      </div>
+
+      <div v-else class="text-muted">请上传图像并点击“上传图像并预测”或使用示例图像。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 特征提取（16维） -->
+<div class="card-ghost card p-3 mb-3">
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <div><strong>特征提取</strong><div class="small-muted">上传图片后，点击提取特征，展示 16 维特征向量</div></div>
+    <div>
+      <input type="file" ref="featInput" style="display:none" @change="onFeatFileChange" accept="image/*" />
+      <button class="btn btn-outline-primary btn-sm me-2" @click="$refs.featInput.click()">选择图片</button>
+      <button class="btn btn-primary btn-sm" @click="extractFeatures" :disabled="!featureImage">特征提取</button>
+    </div>
+  </div>
+  <div class="row g-3">
+    <div class="col-md-5">
+      <div v-if="featurePreview" class="text-center p-2 border rounded">
+        <img :src="featurePreview" style="max-width:100%; border-radius:.5rem;" />
+      </div>
+      <div v-else class="text-muted">尚未选择用于特征提取的图片</div>
+    </div>
+    <div class="col-md-7">
+      <div v-if="featureVector && featureVector.length" class="tensor-box">
+        [ {{ featureVector.map(v => Number(v).toFixed(6)).join(', ') }} ]
+      </div>
+      <div v-else class="text-muted">等待提取 16 维特征向量</div>
+    </div>
+  </div>
+</div>
+
+<!-- CKKS 同态加密参数与特征加密演示 -->
+<div class="card-ghost card p-3 mb-3">
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <div><strong>CKKS 加密演示</strong><div class="small-muted">选择参数，上传特征并加密/解密，展示前后对比与概率</div></div>
+    <div></div>
+  </div>
+  <div class="row g-3 align-items-end">
+    <div class="col-md-4">
+      <label class="small-muted">poly_modulus_degree</label>
+      <select class="form-select" v-model.number="ckks.poly">
+        <option :value="8192">8192</option>
+        <option :value="16384">16384</option>
+        <option :value="32768">32768</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label class="small-muted">coeff_mod_bit_sizes</label>
+      <select class="form-select" v-model="ckks.modBits">
+        <option value="50,30,30,30,50">[50,30,30,30,50]</option>
+        <option value="60,40,40,60">[60,40,40,60]</option>
+        <option value="40,20,20,40">[40,20,20,40]</option>
+      </select>
+    </div>
+    <div class="col-md-2 text-end">
+      <button class="btn btn-primary" @click="encryptFeatures" :disabled="!featureVector || !featureVector.length">上传特征检测</button>
+    </div>
+  </div>
+  <div class="row g-3 mt-3">
+    <div class="col-md-6">
+      <div class="small-muted">加密前特征</div>
+      <div class="tensor-box">[ {{ featureVector && featureVector.length ? featureVector.map(v => Number(v).toFixed(6)).join(', ') : '' }} ]</div>
+    </div>
+    <div class="col-md-6">
+      <div class="small-muted">解密后特征（归一化概率）</div>
+      <div class="tensor-box">[ {{ decryptedProbs && decryptedProbs.length ? decryptedProbs.map(v => Number(v).toFixed(6)).join(', ') : '' }} ]</div>
+    </div>
+  </div>
+
+  <!-- ciphertext 展示 -->
+  <div class="row g-3 mt-3">
+    <div class="col-md-6">
+      <div class="small-muted">上传前 ciphertext（客户端加密结果）</div>
+      <div class="tensor-box" style="max-height:160px; overflow:auto; word-break:break-all;">{{ ckksInputCt || '' }}</div>
+    </div>
+    <div class="col-md-6">
+      <div class="small-muted">返回前 ciphertext（服务端加密计算结果）</div>
+      <div class="tensor-box" style="max-height:160px; overflow:auto; word-break:break-all;">{{ ckksResultCt || '' }}</div>
+    </div>
+  </div>
+</div>

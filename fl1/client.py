@@ -15,6 +15,7 @@ class SimpleMedicalNet(nn.Module):
         self.conv1 = nn.Conv2d(3, 6, 5)
         self.pool = nn.AvgPool2d(2, 2)
         self.conv2 = nn.Conv2d(6, 16, 5)
+
         self.global_avg_pool = nn.AdaptiveAvgPool2d((1, 1))
         self.fc_input_size = 16
         self.fc1 = nn.Linear(self.fc_input_size, 120)
