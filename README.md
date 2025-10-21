@@ -1,37 +1,61 @@
-# fl0: A Flower / pytorch_msg_api app
-
-## Install dependencies and project
-
-The dependencies are listed in the `pyproject.toml` and you can install them as follows:
-
+# 同态加密的分布式协作医学影像异常检测
+## 安装运行流程
+### 1.安装配置环境
+在anaconda创建一个叫fl0的虚拟环境，命令如下
 ```bash
-pip install -e .
+conda create -n fl0 python==3.10
 ```
+在虚拟环境中运行如下命令，安装flower联邦学习框架，所需的pytorch之类的库，tenseal同态加密库
+```bash
+pip install -U "flwr[simulation]"
+cd flower-tutorial
+pip install -e .
+pip install tenseal
+```
+由于我们是在windows下运行该项目，可能有其他报错，请根据命令行错误提示安装一些东西
 
-> **Tip:** Your `pyproject.toml` file can define more than just the dependencies of your Flower app. You can also use it to specify hyperparameters for your runs and control which Flower Runtime is used. By default, it uses the Simulation Runtime, but you can switch to the Deployment Runtime when needed.
-> Learn more in the [TOML configuration guide](https://flower.ai/docs/framework/how-to-configure-pyproject-toml.html).
-
-## Run with the Simulation Engine
-
-In the `fl0` directory, use `flwr run` to run a local simulation:
-
+通过pycharm或者vscode配置你的python interpreter
+### 2.训练模型并保存在服务器
+在虚拟环境的terminal中输入如下命令
 ```bash
 flwr run .
 ```
+训练好的模型会保存为final_model.pth保存在项目根目录下
+### 3.上传图片到服务器进行检测
+直接运行fl1下的run即可，会上传根目录下的test图片
 
-Refer to the [How to Run Simulations](https://flower.ai/docs/framework/how-to-run-simulations.html) guide in the documentation for advice on how to optimize your simulations.
 
-## Run with the Deployment Engine
+## 项目目录
+未在目录中出现的文件暂时标记为次要文件
+```
+│  .gitignore
+│  final_model.pt    //1阶段训练结果
+│  pyproject.toml    //一些flower参数配置
+│  test.jpg          //2阶段测试图片
+│          
+├─fl0                //1. 差分隐私训练
+│  │  client_app.py  //医院客户端
+│  │  net.py         //神经网络
+│  │  server_app.py  //服务器
+│  │  task.py        //客户端和服务器端所需要的类
+│  └─
+│            
+│          
+└─fl1                 //2. 同态加密预测
+    │  client.py      //医院客户端
+    │  run.py         //运行
+    │  server.py      //服务器
+    └─
+```
 
-Follow this [how-to guide](https://flower.ai/docs/framework/how-to-run-flower-with-deployment-engine.html) to run the same app in this example but with Flower's Deployment Engine. After that, you might be interested in setting up [secure TLS-enabled communications](https://flower.ai/docs/framework/how-to-enable-tls-connections.html) and [SuperNode authentication](https://flower.ai/docs/framework/how-to-authenticate-supernodes.html) in your federation.
 
-You can run Flower on Docker too! Check out the [Flower with Docker](https://flower.ai/docs/framework/docker/index.html) documentation.
+## 相关参考
+flower联邦学习框架
 
-## Resources
 
-- Flower website: [flower.ai](https://flower.ai/)
-- Check the documentation: [flower.ai/docs](https://flower.ai/docs/)
-- Give Flower a ⭐️ on GitHub: [GitHub](https://github.com/adap/flower)
-- Join the Flower community!
-  - [Flower Slack](https://flower.ai/join-slack/)
-  - [Flower Discuss](https://discuss.flower.ai/)
+tenseal加密库
+
+
+数据集 BreakHis乳腺癌二分类
+
+
