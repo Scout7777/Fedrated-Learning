@@ -259,6 +259,56 @@
       ],
       "diagnosis": "阳性",
       "preview_url": "/uploads/1761025675025.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-21T11:34:43.607203",
+      "probabilities": [
+        0.9695079922676086,
+        0.028288666158914566
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1761046480309.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-21T11:58:56.845568",
+      "probabilities": [
+        0.9695079326629639,
+        0.02828879840672016
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1761047935376.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-21T12:26:49.890597",
+      "probabilities": [
+        0.9695079922676086,
+        0.02828875184059143
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1761049608626.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-21T12:41:15.203520",
+      "probabilities": [
+        0.9695079326629639,
+        0.028288837522268295
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1761050473754.jpg"
+    },
+    {
+      "username": "hu",
+      "timestamp": "2025-10-21T13:48:43.311870",
+      "probabilities": [
+        0.9928344488143921,
+        0.004186400678008795
+      ],
+      "diagnosis": "阳性",
+      "preview_url": "/uploads/1761054521313.jpg"
     }
   ]
 }

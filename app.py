@@ -210,7 +210,8 @@ def extract_face_encoding(image):
             return None, "检测到多张人脸，请确保只有一张人脸"
         
         # 提取人脸特征编码
-        face_encodings = face_recognition.face_encodings(image_array, face_locations)
+        # 使用更严格的特征提取模型，提升区分度
+        face_encodings = face_recognition.face_encodings(image_array, face_locations, model="large")
         
         if len(face_encodings) == 0:
             return None, "无法提取人脸特征"
@@ -222,7 +223,7 @@ def extract_face_encoding(image):
     except Exception as e:
         return None, f"人脸特征提取失败: {str(e)}"
 
-def compare_faces(encoding1, encoding2, tolerance=0.6):
+def compare_faces(encoding1, encoding2, tolerance=0.45):
     """比较两个人脸特征编码的相似度"""
     if not FACE_RECOGNITION_AVAILABLE:
         return False
@@ -233,7 +234,12 @@ def compare_faces(encoding1, encoding2, tolerance=0.6):
         enc2 = np.array(encoding2)
         
         # 计算距离
-        distance = face_recognition.face_distance([enc1], enc2)[0]
+        distance = float(face_recognition.face_distance([enc1], enc2)[0])
+        # 调试输出（服务器日志可见）
+        try:
+            print(f"[FACE] compare distance={distance:.4f} tol={tolerance}")
+        except Exception:
+            pass
         
         # 返回是否匹配（距离小于阈值）
         return distance <= tolerance
